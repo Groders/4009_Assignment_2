@@ -1,0 +1,8 @@
+COMPILE:
+./_compile
+
+RUN:
+./main ../datafiles/one_sec_input.txt tmp.txt
+
+TEST:
+diff tmp.txt ../datafiles/one_sec_output.txt

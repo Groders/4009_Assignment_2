@@ -1,0 +1,32 @@
+Comparison of parallel and sequential merge sort.
+Base case was set to 5 in each of the sorting algorithms, with a higher base case 
+performance inproves as creating a cilk process cost more than the actual sorting at 
+low base cases. I found that something around 50 worked best, but it is easier to test
+with a lower base case as creating big enough files to sort was a pain. 
+
+
+
+I ran these tests on my home computer which has a 4 core i7 26000 and with 8BG of ram
+given to the vm. My times are probably slower due to the age of my CPU.
+
+n		Parallel Time	Sequential Time	Difference
+2000000		0.779713	1.01022		0.230507
+4000000		1.61874		2.12877		0.51003
+8000000		3.66651		4.03155		0.3650
+10000000	4.20154		5.59608		1.39454
+11000000	5.3785		5.38767		0.00267
+12000000	5.92607		6.11139		0.18523
+15000000	6.48105		8.30994		1.82889
+17000000	6.8599		9.46857		2.60867
+20000000	8.66931		10.8626		2.19329
+23000000	10.1695		12.1042		1.9347
+
+
+The speed up I got as a factor of how many processors i got is hard to determain due to
+the some what inconsistant results. Theoretically I should see speedups of around 4x in the
+best case due to having 4 times the processing power. Instead I see around a 20-25% speed up
+this is probably due to this problem being limited by the cache and I made no effort of making
+my program work well with the cache. Relating this to the number of processor cores avalible I 
+saw about a 5% speed up per core. This is pretty bad as the theorectical speed up is closer to 
+perfect. 
+
